@@ -1,10 +1,10 @@
 import { ColorModeScript } from '@chakra-ui/react';
 import React, { StrictMode } from 'react';
 import * as ReactDOM from 'react-dom/client';
-import { AllClaimsPage } from './components/pages/AllClaimsPage';
+import { ArticleClaimsPage } from './components/pages/ArticleClaimsPage';
 import reportWebVitals from './reportWebVitals';
 import * as serviceWorker from './serviceWorker';
-import { ChakraProvider } from '@chakra-ui/react'
+import { ChakraProvider } from '@chakra-ui/react';
 
 const container = document.getElementById('root');
 const root = ReactDOM.createRoot(container);
@@ -13,7 +13,7 @@ root.render(
   <StrictMode>
     <ColorModeScript />
     <ChakraProvider>
-      <AllClaimsPage />
+      <ArticleClaimsPage />
     </ChakraProvider>
   </StrictMode>
 );

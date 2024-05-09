@@ -1,95 +1,123 @@
-import { Stack, Text } from '@chakra-ui/react'
+import { Stack, Text, Icon } from '@chakra-ui/react';
+import { BsPersonPlus } from 'react-icons/bs';
 
-export const ClaimMetadata = ({metadata}) => (
+export const ClaimMetadata = ({ status, metadata }) => (
+  <Stack
+    direction="row"
+    justify="space-between"
+    align="flex-end"
+    spacing="12px"
+    alignSelf="stretch"
+  >
     <Stack
-      direction="row"
-      justify="space-between"
-      align="flex-end"
-      spacing="12px"
-      alignSelf="stretch"
+      direction="column"
+      justify="flex-start"
+      align="flex-start"
+      spacing="4px"
     >
       <Stack
-        direction="column"
+        direction="row"
         justify="flex-start"
         align="flex-start"
         spacing="4px"
-        flex="1"
+      >
+        <Text
+          fontFamily="Inter"
+          lineHeight="1.33"
+          fontWeight="regular"
+          fontSize="12px"
+          color="#414243"
+        >
+          Author:
+        </Text>
+        <Text
+          fontFamily="Inter"
+          lineHeight="1.33"
+          fontWeight="semibold"
+          fontSize="12px"
+          color="#000000"
+        >
+          {metadata.author}
+        </Text>
+      </Stack>
+      <Stack
+        direction="row"
+        justify="flex-start"
+        align="flex-start"
+        spacing="4px"
+      >
+        <Text
+          fontFamily="Inter"
+          lineHeight="1.33"
+          fontWeight="regular"
+          fontSize="12px"
+          color="#414243"
+        >
+          Source:
+        </Text>
+        <Text
+          fontFamily="Inter"
+          lineHeight="1.33"
+          fontWeight="semibold"
+          fontSize="12px"
+          color="#000000"
+        >
+          {metadata.source}
+        </Text>
+      </Stack>
+      <Stack
+        direction="row"
+        justify="flex-start"
+        align="flex-start"
+        spacing="4px"
+      >
+        <Text
+          fontFamily="Inter"
+          lineHeight="1.33"
+          fontWeight="regular"
+          fontSize="12px"
+          color="#414243"
+        >
+          Date of the statement:
+        </Text>
+        <Text
+          fontFamily="Inter"
+          lineHeight="1.33"
+          fontWeight="semibold"
+          fontSize="12px"
+          color="#000000"
+        >
+          {metadata.date}
+        </Text>
+      </Stack>
+    </Stack>
+    {(status === 'not-checked' || status === 'wip') ? (
+      <Stack
+        direction="row"
+        justify="flex-start"
+        align="flex-start"
+        spacing="16px"
       >
         <Stack
           direction="row"
           justify="flex-start"
           align="flex-start"
-          spacing="4px"
+          spacing="16px"
         >
-          <Text
-            fontFamily="Inter"
-            lineHeight="1.33"
-            fontWeight="regular"
-            fontSize="12px"
-            color="#414243"
-          >
-            Author:
-          </Text>
-          <Text
-            fontFamily="Inter"
-            lineHeight="1.33"
-            fontWeight="semibold"
-            fontSize="12px"
-            color="#000000"
-          >
-            {metadata.author}
-          </Text>
-        </Stack>
-        <Stack
-          direction="row"
-          justify="flex-start"
-          align="flex-start"
-          spacing="4px"
-        >
-          <Text
-            fontFamily="Inter"
-            lineHeight="1.33"
-            fontWeight="regular"
-            fontSize="12px"
-            color="#414243"
-          >
-            Source:
-          </Text>
-          <Text
-            fontFamily="Inter"
-            lineHeight="1.33"
-            fontWeight="semibold"
-            fontSize="12px"
-            color="#000000"
-          >
-            {metadata.source}
-          </Text>
-        </Stack>
-        <Stack
-          direction="row"
-          justify="flex-start"
-          align="flex-start"
-          spacing="4px"
-        >
-          <Text
-            fontFamily="Inter"
-            lineHeight="1.33"
-            fontWeight="regular"
-            fontSize="12px"
-            color="#414243"
-          >
-            Date of the statement
-          </Text>
-          <Text
-            fontFamily="Inter"
-            lineHeight="1.33"
-            fontWeight="semibold"
-            fontSize="12px"
-            color="#000000"
-          >
-            {metadata.date}
-          </Text>
+          <Stack direction="row" justify="center" align="center" spacing="8px">
+            <Icon as={BsPersonPlus} />
+            <Text
+              fontFamily="Inter"
+              lineHeight="1.43"
+              fontWeight="semibold"
+              fontSize="14px"
+              color="#2B6CB0"
+            >
+              {status === 'wip' ? "Join" : "Assign"}
+            </Text>
+          </Stack>
         </Stack>
       </Stack>
-    </Stack>
-)
+    ) : null}
+  </Stack>
+);

@@ -36,6 +36,6 @@ export const Claim = ({status, text, badges, metadata, factchecker}) => (
         {text}
       </Text>
     </Stack>
-    <ClaimMetadata metadata={metadata}/>
+    <ClaimMetadata metadata={metadata} status={status}/>
   </Stack>
 )
