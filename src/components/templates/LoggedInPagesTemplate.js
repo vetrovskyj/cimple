@@ -1,36 +1,30 @@
 import { Stack } from '@chakra-ui/react';
-import { UserProfile } from '../UI/molecules/UserProfile';
-import { ReactComponent as Logo } from '../../assets/logo/logo.svg';
 import '../../assets/styles/styles.scss';
+import { Sidebar } from '../UI/organisms/Sidebar';
 
-export const LoggedInPagesTemplate = ({children}) => (
-  <Stack
-    direction="column"
-    justify="flex-start"
-    align="flex-start"
-    spacing="0px"
-  >
+export const LoggedInPagesTemplate = ({ children }) => (
+  <Stack direction="row" spacing="0px">
+    <Sidebar />
     <Stack
-      paddingX="202px"
-      paddingY="32px"
       direction="column"
       justify="flex-start"
-      align="center"
-      spacing="32px"
-      overflow="hidden"
-      background="#F7FAFC"
+      align="flex-start"
+      spacing="0px"
       width="100%"
     >
       <Stack
-        direction="row"
-        justify="space-between"
+        paddingX="202px"
+        paddingY="32px"
+        direction="column"
+        justify="flex-start"
         align="center"
+        spacing="32px"
+        overflow="hidden"
+        background="#F7FAFC"
         width="100%"
       >
-        <Logo alt="Cimple logo" className="logo" />
-        <UserProfile />
+        {children}
       </Stack>
-      {children}
     </Stack>
   </Stack>
 );

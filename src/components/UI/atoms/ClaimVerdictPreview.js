@@ -1,5 +1,5 @@
 import { Stack, Icon, Text } from '@chakra-ui/react';
-import { BsCheckCircle, BsQuestionCircle, BsXCircle } from 'react-icons/bs'; 
+import { BsCheckCircle, BsQuestionCircle, BsXCircle, BsPencil } from 'react-icons/bs'; 
 import { ReactComponent as WipIcon } from '../../../assets/icons/wip.svg';
 
 export const ClaimVerdictPreview = ({ status }) => {
@@ -24,8 +24,11 @@ export const ClaimVerdictPreview = ({ status }) => {
       iconComponent = <Icon as={BsQuestionCircle} />;
       verdictText = "Not checked";
       verdictColor = "#ECC94B";
+    } else if (status === "selected") {
+      iconComponent = <Icon as={BsPencil} />;
+      verdictText = "Selected claim";
+      verdictColor = "#2B6CB0";
     } else {
-      // Default case if status doesn't match any condition
       iconComponent = null;
     }
 

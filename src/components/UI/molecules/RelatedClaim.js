@@ -1,20 +1,20 @@
 import { Stack, Text } from '@chakra-ui/react';
-import { ClaimMetadata } from '../molecules/ClaimMetadata';
-import { ClaimHeader } from '../molecules/ClaimHeader';
+import { ClaimHeader } from './ClaimHeader';
+import { ClaimMetadata } from './ClaimMetadata';
 
-export const Claim = ({ status, text, badges, metadata, factchecker, id }) => (
+export const RelatedClaim = ({
+  status,
+  text,
+  badges,
+  metadata,
+  factchecker,
+  id,
+  related
+}) => (
   <Stack
-    paddingX="35px"
-    paddingY="25px"
-    borderRadius="12px"
-    direction="column"
-    justify="flex-start"
-    align="flex-start"
-    spacing="16px"
-    overflow="hidden"
-    width="748px"
-    maxWidth="100%"
-    background="#FFFFFF"
+    paddingY="16px"
+    _notLast={{ borderBottom: '1px', borderColor: '#E2E8F0' }}
+    _first={{ paddingTop: '0px' }}
   >
     <ClaimHeader status={status} factchecker={factchecker} badges={badges} />
     <Stack
@@ -36,6 +36,6 @@ export const Claim = ({ status, text, badges, metadata, factchecker, id }) => (
         {text}
       </Text>
     </Stack>
-    <ClaimMetadata metadata={metadata} status={status} id={id} />
+    <ClaimMetadata metadata={metadata} status={status} id={id} related={related} />
   </Stack>
 );

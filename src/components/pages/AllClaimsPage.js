@@ -72,6 +72,7 @@ export const AllClaimsPage = () => (
           spacing="16px"
         >
           <Claim
+            id={claim.id}
             status={claim.status}
             badges={claim.badges}
             factchecker={claim.factchecker}

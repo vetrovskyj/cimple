@@ -1,7 +1,9 @@
-import { Stack, Text, Icon } from '@chakra-ui/react';
-import { BsPersonPlus } from 'react-icons/bs';
+import { Stack, Text, Icon, Link as ChakraLink } from '@chakra-ui/react';
+import { BsPersonPlus, BsBookmarkPlus } from 'react-icons/bs';
+import { route } from '../../../routesDefinition';
+import { Link } from 'react-router-dom';
 
-export const ClaimMetadata = ({ status, metadata }) => (
+export const ClaimMetadata = ({ status, metadata, id, related }) => (
   <Stack
     direction="row"
     justify="space-between"
@@ -91,12 +93,14 @@ export const ClaimMetadata = ({ status, metadata }) => (
         </Text>
       </Stack>
     </Stack>
-    {(status === 'not-checked' || status === 'wip') ? (
-      <Stack
-        direction="row"
-        justify="flex-start"
-        align="flex-start"
-        spacing="16px"
+    {related ? (
+      <Icon as={BsBookmarkPlus} color="#ECC94B" strokeWidth="0.5px" />
+    ) : status === 'not-checked' || status === 'wip' ? (
+      <ChakraLink
+        as={Link}
+        to={route.evidenceRetrieval(id)}
+        style={{ textDecoration: 'none' }}
+        _focus={{ boxShadow: 'none' }}
       >
         <Stack
           direction="row"
@@ -104,20 +108,32 @@ export const ClaimMetadata = ({ status, metadata }) => (
           align="flex-start"
           spacing="16px"
         >
-          <Stack direction="row" justify="center" align="center" spacing="8px">
-            <Icon as={BsPersonPlus} />
-            <Text
-              fontFamily="Inter"
-              lineHeight="1.43"
-              fontWeight="semibold"
-              fontSize="14px"
-              color="#2B6CB0"
+          <Stack
+            direction="row"
+            justify="flex-start"
+            align="flex-start"
+            spacing="16px"
+          >
+            <Stack
+              direction="row"
+              justify="center"
+              align="center"
+              spacing="8px"
             >
-              {status === 'wip' ? "Join" : "Assign"}
-            </Text>
+              <Icon as={BsPersonPlus} />
+              <Text
+                fontFamily="Inter"
+                lineHeight="1.43"
+                fontWeight="semibold"
+                fontSize="14px"
+                color="#2B6CB0"
+              >
+                {status === 'wip' ? 'Join' : 'Assign'}
+              </Text>
+            </Stack>
           </Stack>
         </Stack>
-      </Stack>
+      </ChakraLink>
     ) : null}
   </Stack>
 );

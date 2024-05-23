@@ -1,0 +1,22 @@
+[{
+        "id": 1,
+        "firstName": "Segun",
+        "lastName": "Adebayo",
+        "email": "sage@gmail.com",
+        "place": "University of Oxford"
+    },
+    {
+        "id": 2,
+        "firstName": "Emily",
+        "lastName": "Sue",
+        "email": "sue@gmail.com",
+        "place": "University of Cambridge"
+    },
+    {
+        "id": 3,
+        "firstName": "Jeremy",
+        "lastName": "Hopkins",
+        "email": "jeremy@gmail.com",
+        "place": "Stanford University"
+    }
+]

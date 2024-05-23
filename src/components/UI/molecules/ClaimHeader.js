@@ -1,5 +1,5 @@
 import { Stack, Icon, Text, Badge, Box, Link } from '@chakra-ui/react';
-import { BsBoxArrowUpRight } from 'react-icons/bs';
+import { BsBoxArrowUpRight, BsPlusCircle } from 'react-icons/bs';
 import { ClaimVerdictPreview } from '../atoms/ClaimVerdictPreview';
 
 export const ClaimHeader = ({ status, factchecker, badges }) => (
@@ -40,11 +40,13 @@ export const ClaimHeader = ({ status, factchecker, badges }) => (
               <Badge>{badge}</Badge>
             ))}
           </Stack>
-          <Icon as={BsBoxArrowUpRight} />
+          {status === 'selected' ? <Icon as={BsPlusCircle} /> : (
+            <Icon as={BsBoxArrowUpRight} />
+          )}
         </Stack>
       </Stack>
     </Stack>
-    {status === 'not-checked' ? null : (
+    {status === 'not-checked' || status === 'selected' ? null : (
       <Text
         fontFamily="Inter"
         lineHeight="1.33"

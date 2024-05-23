@@ -10,7 +10,8 @@ import {
   InputLeftElement,
   InputRightAddon,
 } from '@chakra-ui/react';
-import { BsInfoCircle, BsSearch, BsCamera } from 'react-icons/bs';
+import { BsInfoCircle, BsSearch } from 'react-icons/bs';
+import { ReactComponent as BsCamera } from '../../assets/icons/BsCamera.svg';
 import { Claim } from '../UI/organisms/Claim';
 import claims from '../../mocks/claims.json';
 import { LoggedInPagesTemplate } from '../templates/LoggedInPagesTemplate';
@@ -47,15 +48,14 @@ export const ArticleClaimsPage = () => {
           variant="soft-rounded"
           justifyContent="end"
           size="sm"
-          colorScheme="blue"
           width="364px"
           height="32px"
           maxWidth="100%"
           index={selectedTabIndex}
           onChange={index => setSelectedTabIndex(index)}
         >
-          <Tab borderRadius="6px">All claims</Tab>
-          <Tab borderRadius="6px">Not checked</Tab>
+          <Tab color="#2B6CB0" _selected={{ bg: "#2B6CB0", color: "white" }} borderRadius="6px">All claims</Tab>
+          <Tab color="#2B6CB0" _selected={{ bg: "#2B6CB0", color: "white" }} borderRadius="6px">Not checked</Tab>
         </Tabs>
       </Stack>
       <InputGroup
@@ -80,7 +80,7 @@ export const ArticleClaimsPage = () => {
           <Icon as={BsSearch} />
         </InputLeftElement>
         <InputRightAddon background="gray.100">
-          <Icon as={BsCamera} />
+          <BsCamera />
         </InputRightAddon>
       </InputGroup>
       <Stack
@@ -130,6 +130,7 @@ export const ArticleClaimsPage = () => {
             spacing="16px"
           >
             <Claim
+              id={claim.id}
               status={claim.status}
               badges={claim.badges}
               factchecker={claim.factchecker}
