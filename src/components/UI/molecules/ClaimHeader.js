@@ -20,7 +20,6 @@ export const ClaimHeader = ({ status, factchecker, badges }) => (
         justify="space-between"
         align="center"
         spacing="10px"
-        width="678px"
         maxWidth="100%"
       >
         <ClaimVerdictPreview status={status} />

@@ -1,4 +1,5 @@
 [{
+        "id": 1,
         "title": "COVID-19: From Origins to Public Health",
         "date": "4. 3. 2020",
         "author": "Dr. Elizabeth Thompson et al.",
@@ -6,6 +7,7 @@
         "type": "Book"
     },
     {
+        "id": 2,
         "title": "World Health Organization (WHO)",
         "date": "24. 8. 2021",
         "author": "World Health Organization (WHO) www.who.int",
@@ -13,6 +15,7 @@
         "type": "Web"
     },
     {
+        "id": 3,
         "title": "Comparing COVID-19 and Influenza",
         "date": "30. 6. 2022",
         "author": "New England Journal",

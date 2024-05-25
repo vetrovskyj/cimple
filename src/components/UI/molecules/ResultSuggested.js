@@ -1,7 +1,9 @@
-import { Stack, Text, Button, Icon } from '@chakra-ui/react'
-import { BsArrowRight } from 'react-icons/bs'
+import { Stack, Text, Button, Icon, Link as ChakraLink } from '@chakra-ui/react';
+import { BsArrowRight } from 'react-icons/bs';
+import { route } from '../../../routesDefinition';
+import { Link } from 'react-router-dom';
 
-export const ResultSuggested = () => (
+export const ResultSuggested = ({ claimId }) => (
   <Stack
     paddingX="35px"
     paddingY="25px"
@@ -74,14 +76,21 @@ export const ResultSuggested = () => (
           </Stack>
         </Stack>
       </Stack>
-      <Button
-        rightIcon={<Icon as={BsArrowRight} />}
-        size="sm"
-        variant="solid"
-        colorScheme="blue"
+      <ChakraLink
+        as={Link}
+        to={route.summarization(claimId)}
+        style={{ textDecoration: 'none' }}
+        _focus={{ boxShadow: 'none' }}
       >
-        Write explanation
-      </Button>
+        <Button
+          rightIcon={<Icon as={BsArrowRight} />}
+          size="sm"
+          variant="solid"
+          colorScheme="blue"
+        >
+          Write explanation
+        </Button>
+      </ChakraLink>
     </Stack>
   </Stack>
-)
+);

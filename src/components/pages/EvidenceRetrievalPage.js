@@ -112,7 +112,7 @@ export const EvidenceRetrievalPage = () => {
           <EvidencePanel />
         </Stack>
         <RelatedClaimsPanel />  
-        <ResultSuggested />
+        <ResultSuggested claimId={selectedClaim.id} />
       </Stack>
       </Stack>
     </LoggedInPagesTemplate>

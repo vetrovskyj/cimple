@@ -1,10 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { EvidenceRecord } from '../molecules/EvidenceRecord';
 import evidence from '../../../mocks/evidence.json';
-import { Stack, Text, Icon } from '@chakra-ui/react';
-import { BsArrowsAngleExpand } from 'react-icons/bs';
+import {
+  Stack,
+  Text,
+  AccordionIcon,
+  Accordion,
+  AccordionItem,
+  AccordionButton,
+  AccordionPanel,
+} from '@chakra-ui/react';
 
-export const EvidencePanel = () => {
+export const SelectedEvidencePanel = () => {
   const [selectedEvidence, setSelectedEvidence] = useState([]);
 
   useEffect(() => {
@@ -17,25 +24,26 @@ export const EvidencePanel = () => {
       const updatedEvidence = prevSelectedEvidence.includes(id)
         ? prevSelectedEvidence.filter((recordId) => recordId !== id)
         : [...prevSelectedEvidence, id];
-
+      
       localStorage.setItem('selectedEvidence', JSON.stringify(updatedEvidence));
       return updatedEvidence;
     });
   };
 
-
   return (
-    <Stack
+    <Accordion
       direction="column"
       justify="flex-start"
       align="flex-start"
       spacing="16px"
       flex="1"
       alignSelf="stretch"
+      allowMultiple
     >
-      <Stack
+      <AccordionItem
         paddingX="35px"
-        paddingY="25px"
+        paddingBottom="25px"
+        paddingTop="9px"
         borderRadius="12px"
         direction="column"
         justify="flex-start"
@@ -45,19 +53,26 @@ export const EvidencePanel = () => {
         flex="1"
         alignSelf="stretch"
         background="#FFFFFF"
+        border="none"
       >
-        <Stack
+        <AccordionButton
           direction="row"
           justify="space-between"
           align="flex-start"
           spacing="16px"
           alignSelf="stretch"
+          paddingX="0px"
+          paddingTop="16px"
+          paddingBottom="0px"
+          _expanded={{ paddingBottom: "16px" }}
+          _hover={{backgroundColor: "none"}}
         >
           <Stack
             direction="row"
             justify="flex-start"
             align="center"
             spacing="10px"
+            flex="1"
           >
             <Stack
               direction="row"
@@ -72,34 +87,37 @@ export const EvidencePanel = () => {
                 fontSize="14px"
                 color="#2B6CB0"
               >
-                Evidence
+                Selected evidence
               </Text>
             </Stack>
           </Stack>
-          <Icon as={BsArrowsAngleExpand} />
-        </Stack>
-        <Stack
+          <AccordionIcon color="#2B6CB0" />
+        </AccordionButton>
+        <AccordionPanel
           direction="column"
           justify="flex-start"
           align="flex-start"
           spacing="0"
           alignSelf="stretch"
+          padding="0px"
         >
-          {evidence.map((evidenceItem) => (
-            <EvidenceRecord
-              key={evidenceItem.id}
-              id={evidenceItem.id}
-              title={evidenceItem.title}
-              date={evidenceItem.date}
-              author={evidenceItem.author}
-              text={evidenceItem.text}
-              type={evidenceItem.type}
-              onEvidenceSelectionToggle={handleEvidenceSelectionToggle}
-              isSelectedEvidence={selectedEvidence.includes(evidenceItem.id)}
-            />
-          ))}
-        </Stack>
-      </Stack>
-    </Stack>
+          {evidence
+            .filter((evidenceItem) => selectedEvidence.includes(evidenceItem.id))
+            .map((evidenceItem) => (
+              <EvidenceRecord
+                key={evidenceItem.id}
+                id={evidenceItem.id}
+                title={evidenceItem.title}
+                date={evidenceItem.date}
+                author={evidenceItem.author}
+                text={evidenceItem.text}
+                type={evidenceItem.type}
+                onEvidenceSelectionToggle={handleEvidenceSelectionToggle}
+                isSelectedEvidence={true}
+              />
+            ))}
+        </AccordionPanel>
+      </AccordionItem>
+    </Accordion>
   );
 };

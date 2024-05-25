@@ -1,9 +1,9 @@
 import { Stack, Text, Icon, Link as ChakraLink } from '@chakra-ui/react';
-import { BsPersonPlus, BsBookmarkPlus } from 'react-icons/bs';
+import { BsPersonPlus, BsBookmarkPlus, BsBookmarkFill } from 'react-icons/bs';
 import { route } from '../../../routesDefinition';
 import { Link } from 'react-router-dom';
 
-export const ClaimMetadata = ({ status, metadata, id, related }) => (
+export const ClaimMetadata = ({ status, metadata, id, related, isSelectedRelatedClaims, onRelatedClaimsSelectionToggle }) => (
   <Stack
     direction="row"
     justify="space-between"
@@ -94,7 +94,12 @@ export const ClaimMetadata = ({ status, metadata, id, related }) => (
       </Stack>
     </Stack>
     {related ? (
-      <Icon as={BsBookmarkPlus} color="#ECC94B" strokeWidth="0.5px" />
+      <Icon
+        as={isSelectedRelatedClaims ? BsBookmarkFill : BsBookmarkPlus}
+        color="#ECC94B"
+        strokeWidth="0.5px"
+        onClick={() => onRelatedClaimsSelectionToggle(id)}
+      />
     ) : status === 'not-checked' || status === 'wip' ? (
       <ChakraLink
         as={Link}

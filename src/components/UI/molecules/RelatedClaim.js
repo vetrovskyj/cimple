@@ -9,6 +9,8 @@ export const RelatedClaim = ({
   metadata,
   factchecker,
   id,
+  isSelectedRelatedClaims,
+  onRelatedClaimsSelectionToggle,
   related
 }) => (
   <Stack
@@ -30,12 +32,12 @@ export const RelatedClaim = ({
         fontWeight="regular"
         fontSize="12px"
         color="#000000"
-        width="678px"
         maxWidth="100%"
+        noOfLines={3}
       >
         {text}
       </Text>
     </Stack>
-    <ClaimMetadata metadata={metadata} status={status} id={id} related={related} />
+    <ClaimMetadata metadata={metadata} status={status} id={id} related={related} onRelatedClaimsSelectionToggle={onRelatedClaimsSelectionToggle} isSelectedRelatedClaims={isSelectedRelatedClaims} />
   </Stack>
 );

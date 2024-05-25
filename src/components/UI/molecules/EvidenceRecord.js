@@ -1,8 +1,8 @@
 import { Stack, Icon, Text } from '@chakra-ui/react';
-import { BsBook, BsNewspaper } from 'react-icons/bs';
+import { BsBook, BsNewspaper, BsBookmarkPlus, BsBookmarkFill } from 'react-icons/bs';
 import { ReactComponent as BsGlobe2 } from '../../../assets/icons/BsGlobe2.svg';
 
-export const EvidenceRecord = ({ title, date, author, text, type }) => (
+export const EvidenceRecord = ({ id, title, date, author, text, type, onEvidenceSelectionToggle, isSelectedEvidence }) => (
   <Stack
     direction="row"
     justify="flex-start"
@@ -79,6 +79,12 @@ export const EvidenceRecord = ({ title, date, author, text, type }) => (
             </Text>
           </Stack>
         </Stack>
+        <Icon
+          as={isSelectedEvidence ? BsBookmarkFill : BsBookmarkPlus}
+          color="#ECC94B"
+          strokeWidth="0.5px"
+          onClick={() => onEvidenceSelectionToggle(id)}
+        />
       </Stack>
       <Text
         fontFamily="Inter"
