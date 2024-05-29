@@ -1,0 +1,60 @@
+[{
+        "id": 1,
+        "status": "false",
+        "factchecker": "factchecker99",
+        "badges": [
+            "misleading",
+            "health"
+        ],
+        "text": "The COVID-19 vaccine developed by Pfizer-BioNTech has an efficacy rate of 95% in preventing symptomatic COVID-19 infections.",
+        "metadata": {
+            "author": "Dr. Jennifer Thompson",
+            "source": "The Economist",
+            "date": "09.05.2024"
+        }
+    },
+    {
+        "id": 2,
+        "status": "true",
+        "factchecker": "factchecker98",
+        "badges": [
+            "misleading",
+            "health"
+        ],
+        "text": "The COVID-19 vaccine developed by Pfizer-BioNTech has an efficacy rate of 95% in preventing symptomatic COVID-19 infections.",
+        "metadata": {
+            "author": "Dr. Jennifer Thompson",
+            "source": "The Economist",
+            "date": "09.05.2024"
+        }
+    },
+    {
+        "id": 3,
+        "status": "not-checked",
+        "badges": [
+            "misleading",
+            "health"
+        ],
+        "text": "The COVID-19 vaccine developed by Pfizer-BioNTech has an efficacy rate of 95% in preventing symptomatic COVID-19 infections.",
+        "metadata": {
+            "author": "Dr. Jennifer Thompson",
+            "source": "The Economist",
+            "date": "09.05.2024"
+        }
+    },
+    {
+        "id": 4,
+        "status": "wip",
+        "factchecker": "factchecker96",
+        "badges": [
+            "misleading",
+            "health"
+        ],
+        "text": "The COVID-19 vaccine developed by Pfizer-BioNTech has an efficacy rate of 95% in preventing symptomatic COVID-19 infections.",
+        "metadata": {
+            "author": "Dr. Jennifer Thompson",
+            "source": "The Economist",
+            "date": "09.05.2024"
+        }
+    }
+]

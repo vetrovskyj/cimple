@@ -1,0 +1,25 @@
+[{
+        "id": 1,
+        "title": "COVID-19: From Origins to Public Health",
+        "date": "4. 3. 2020",
+        "author": "Dr. Elizabeth Thompson et al.",
+        "text": "COVID-19 poses a more significant threat to public health than the common flu, warranting extensive public health efforts to mitigate its spread...",
+        "type": "Book"
+    },
+    {
+        "id": 2,
+        "title": "World Health Organization (WHO)",
+        "date": "24. 8. 2021",
+        "author": "World Health Organization (WHO) www.who.int",
+        "text": "Contrary to the notion that COVID-19 is no worse than the flu, extensive global data and scientific research consistently demonstrate that COVID-19 is more transmissible...",
+        "type": "Web"
+    },
+    {
+        "id": 3,
+        "title": "Comparing COVID-19 and Influenza",
+        "date": "30. 6. 2022",
+        "author": "New England Journal",
+        "text": "Numerous studies and clinical observations have established that COVID-19 is distinct from seasonal influenza in terms of its higher transmission rate, greater severity...",
+        "type": "Journal"
+    }
+]
