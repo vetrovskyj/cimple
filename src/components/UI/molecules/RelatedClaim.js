@@ -17,6 +17,7 @@ export const RelatedClaim = ({
     paddingY="16px"
     _notLast={{ borderBottom: '1px', borderColor: '#E2E8F0' }}
     _first={{ paddingTop: '0px' }}
+    width="100%"
   >
     <ClaimHeader status={status} factchecker={factchecker} badges={badges} />
     <Stack
