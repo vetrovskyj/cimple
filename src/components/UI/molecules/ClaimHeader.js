@@ -8,12 +8,14 @@ export const ClaimHeader = ({ status, factchecker, badges }) => (
     justify="flex-start"
     align="flex-start"
     spacing="4px"
+    width="100%"
   >
     <Stack
       direction="column"
       justify="flex-start"
       align="flex-start"
       spacing="4px"
+        width="100%"
     >
       <Stack
         direction="row"
@@ -21,6 +23,7 @@ export const ClaimHeader = ({ status, factchecker, badges }) => (
         align="center"
         spacing="10px"
         maxWidth="100%"
+        width="100%"
       >
         <ClaimVerdictPreview status={status} />
         <Stack
