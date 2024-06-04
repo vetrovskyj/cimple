@@ -1,14 +1,19 @@
-import React, { useState, useEffect } from 'react';
-import { EvidenceRecord } from '../molecules/EvidenceRecord';
-import evidence from '../../../mocks/evidence.json';
-import { Stack, Text, Icon } from '@chakra-ui/react';
-import { BsArrowsAngleExpand } from 'react-icons/bs';
+import React, { useState, useEffect } from "react";
+import { EvidenceRecord } from "../molecules/EvidenceRecord";
+import evidence from "../../../mocks/evidence.json";
+import { Stack, Text, Icon, useDisclosure } from "@chakra-ui/react";
+import { BsArrowsAngleExpand } from "react-icons/bs";
+import { EvidencePanelDetail } from "./EvidencePanelDetail";
 
 export const EvidencePanel = () => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
   const [selectedEvidence, setSelectedEvidence] = useState([]);
 
+  console.log(isOpen)
+
   useEffect(() => {
-    const storedEvidence = JSON.parse(localStorage.getItem('selectedEvidence')) || [];
+    const storedEvidence =
+      JSON.parse(localStorage.getItem("selectedEvidence")) || [];
     setSelectedEvidence(storedEvidence);
   }, []);
 
@@ -18,11 +23,10 @@ export const EvidencePanel = () => {
         ? prevSelectedEvidence.filter((recordId) => recordId !== id)
         : [...prevSelectedEvidence, id];
 
-      localStorage.setItem('selectedEvidence', JSON.stringify(updatedEvidence));
+      localStorage.setItem("selectedEvidence", JSON.stringify(updatedEvidence));
       return updatedEvidence;
     });
   };
-
 
   return (
     <Stack
@@ -46,38 +50,45 @@ export const EvidencePanel = () => {
         alignSelf="stretch"
         background="#FFFFFF"
       >
-        <Stack
-          direction="row"
-          justify="space-between"
-          align="flex-start"
-          spacing="16px"
-          alignSelf="stretch"
-        >
+        {isOpen === true ? null : (
           <Stack
             direction="row"
-            justify="flex-start"
-            align="center"
-            spacing="10px"
+            justify="space-between"
+            align="flex-start"
+            spacing="16px"
+            alignSelf="stretch"
           >
             <Stack
               direction="row"
               justify="flex-start"
               align="center"
-              spacing="8px"
+              spacing="10px"
             >
-              <Text
-                fontFamily="Inter"
-                lineHeight="1.43"
-                fontWeight="semibold"
-                fontSize="14px"
-                color="#2B6CB0"
+              <Stack
+                direction="row"
+                justify="flex-start"
+                align="center"
+                spacing="8px"
               >
-                Evidence
-              </Text>
+                <Text
+                  fontFamily="Inter"
+                  lineHeight="1.43"
+                  fontWeight="semibold"
+                  fontSize="14px"
+                  color="#2B6CB0"
+                >
+                  Evidence
+                </Text>
+              </Stack>
             </Stack>
+            <Icon as={BsArrowsAngleExpand} onClick={onOpen} />
           </Stack>
-          <Icon as={BsArrowsAngleExpand} />
-        </Stack>
+        )}
+        <EvidencePanelDetail
+          isOpen={isOpen}
+          onOpen={onOpen}
+          onClose={onClose}
+        />
         <Stack
           direction="column"
           justify="flex-start"

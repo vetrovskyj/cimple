@@ -4,17 +4,25 @@ import {
   Button,
   Icon,
   Box,
+  Select,
   Link as ChakraLink,
-} from '@chakra-ui/react';
-import { BsArrowRight, BsArrowClockwise } from 'react-icons/bs';
-import { route } from '../../../routesDefinition';
-import { Link } from 'react-router-dom';
-import ReactQuill from 'react-quill';
-import 'react-quill/dist/quill.snow.css';
-import { useState } from 'react';
+} from "@chakra-ui/react";
+import { BsArrowRight, BsArrowClockwise } from "react-icons/bs";
+import { route } from "../../../routesDefinition";
+import { Link } from "react-router-dom";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
+import { useState } from "react";
+import { PopoverForm } from "../molecules/SumSettingsPopover";
 
 export const ResultPanel = ({ claimId }) => {
-  const [value, setValue] = useState('');
+  const [summarizationValue, setSummarizationValue] = useState("");
+  const [explanationValue, setExplanationValue] = useState("");
+  const [resultValue, setResultValue] = useState("unverifiable");
+
+  const handleResultChange = (event) => {
+    setResultValue(event.target.value);
+  };
   return (
     <Stack
       paddingX="35px"
@@ -51,14 +59,15 @@ export const ResultPanel = ({ claimId }) => {
         direction="column"
         justify="flex-start"
         align="flex-start"
-        spacing="8px"
+        spacing="16px"
         w="100%"
       >
         <Stack
-          direction="row"
+          direction="column"
           justify="flex-start"
           align="flex-start"
           spacing="8px"
+          w="100%"
         >
           <Text
             fontFamily="Inter"
@@ -67,63 +76,114 @@ export const ResultPanel = ({ claimId }) => {
             fontSize="12px"
             color="#000000"
           >
-            Summarization
+            Explanation
           </Text>
-          <Icon as={BsArrowClockwise} />
+          <Box width="100%">
+            <ReactQuill
+              width="100%"
+              theme="snow"
+              value={explanationValue}
+              onChange={setExplanationValue}
+            />
+          </Box>
         </Stack>
-        <Box width="100%"><ReactQuill width="100%" theme="snow" value={value} onChange={setValue} /></Box>
-      </Stack>
-      <Stack
-        direction="row"
-        justify="space-between"
-        align="center"
-        spacing="16px"
-        alignSelf="stretch"
-      >
         <Stack
           direction="column"
           justify="flex-start"
           align="flex-start"
           spacing="8px"
+          w="100%"
+        >
+          <Stack
+            direction="row"
+            justifyContent="space-between"
+            w="100%"
+            alignItems="center"
+          >
+            <Stack
+              direction="row"
+              justify="flex-start"
+              align="flex-start"
+              spacing="8px"
+              alignItems="center"
+            >
+              <Text
+                fontFamily="Inter"
+                lineHeight="1.33"
+                fontWeight="semibold"
+                fontSize="12px"
+                color="#000000"
+              >
+                Summarization
+              </Text>
+              <Icon as={BsArrowClockwise} />
+            </Stack>
+            <PopoverForm />
+          </Stack>
+          <Box width="100%">
+            <ReactQuill
+              width="100%"
+              theme="snow"
+              value={summarizationValue}
+              onChange={setSummarizationValue}
+            />
+          </Box>
+        </Stack>
+      </Stack>
+      <Stack
+        direction="row"
+        justify="space-between"
+        align="baseline"
+        spacing="16px"
+        alignSelf="stretch"
+      >
+        <Stack
+          direction="row"
+          justify="flex-start"
+          align="center"
+          spacing="12px"
         >
           <Stack
             direction="row"
             justify="flex-start"
             align="center"
-            spacing="12px"
+            spacing="4px"
           >
-            <Stack
-              direction="row"
-              justify="flex-start"
-              align="flex-end"
-              spacing="4px"
+            <Text
+              fontFamily="Inter"
+              lineHeight="1.33"
+              fontWeight="regular"
+              fontSize="12px"
+              color="#414243"
             >
-              <Text
-                fontFamily="Inter"
-                lineHeight="1"
-                fontWeight="regular"
-                fontSize="12px"
-                color="#414243"
-              >
-                Automatically assigned verdict:
-              </Text>
-              <Text
-                fontFamily="Inter"
-                lineHeight="1"
-                fontWeight="semibold"
-                fontSize="14px"
-                color="#AC1212"
-              >
-                False
-              </Text>
-            </Stack>
+              Verdict:
+            </Text>
+            <Select
+              onChange={handleResultChange}
+              value={resultValue}
+              size="xs"
+              bg={
+                resultValue === "true"
+                  ? "#319795"
+                  : resultValue === "false"
+                  ? "#AC1212"
+                  : "#ECC94B"
+              }
+              border="none"
+              borderRadius="4px"
+              color="white"
+            >
+              <option value="true">True</option>
+              <option value="false">False</option>
+              <option value="unverifiable">Unverifiable</option>
+            </Select>
           </Stack>
         </Stack>
         <ChakraLink
           as={Link}
           to={route.summarization(claimId)}
-          style={{ textDecoration: 'none' }}
-          _focus={{ boxShadow: 'none' }}
+          style={{ textDecoration: "none" }}
+          _focus={{ boxShadow: "none" }}
         >
           <Button
             rightIcon={<Icon as={BsArrowRight} />}

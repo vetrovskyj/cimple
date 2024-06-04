@@ -14,7 +14,7 @@ import claims from '../../mocks/claims.json';
 import { LoggedInPagesTemplate } from '../templates/LoggedInPagesTemplate';
 import { Claim } from '../UI/organisms/Claim';
 import { ExpertsPanel } from '../UI/organisms/ExpertsPanel';
-import { EvidencePanel } from '../UI/organisms/EvidencePanel ';
+import { EvidencePanel } from '../UI/organisms/EvidencePanel';
 import { RelatedClaimsPanel } from '../UI/organisms/RelatedClaimsPanel';
 import { ResultSuggested } from '../UI/molecules/ResultSuggested';
 

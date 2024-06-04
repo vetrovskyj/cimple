@@ -8,7 +8,6 @@ import { Claim } from '../UI/organisms/Claim';
 import { SelectedRelatedClaimsPanel } from '../UI/organisms/SelectedRelatedClaimsPanel';
 import { SelectedEvidencePanel } from '../UI/organisms/SelectedEvidencePanel ';
 import { ResultPanel } from '../UI/organisms/ResultPanel';
-import { ResultSuggested } from '../UI/molecules/ResultSuggested';
 
 export const SummarizationPage = () => {
   const { id } = useParams();
