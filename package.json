@@ -1,5 +1,6 @@
 {
     "name": "cimple",
+    "homepage": "https://vetrovskyj.github.io/cimple/",
     "version": "0.1.0",
     "private": true,
     "dependencies": {
